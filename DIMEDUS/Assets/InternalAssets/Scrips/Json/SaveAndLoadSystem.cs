@@ -20,12 +20,12 @@ namespace DIMEDUS.RimuruDev
         {
             dataContainer = FindObjectOfType<SceneDataContainer>();
             UIController = FindObjectOfType<UIController>();
-
-            InitData();
         }
 
         private void Start()
         {
+            InitData();
+
             leftGrid = dataContainer.LeftGridParent.transform;
             rightGrid = dataContainer.RightGridParent.transform;
 
@@ -101,7 +101,7 @@ namespace DIMEDUS.RimuruDev
 
         public void SaveToJson()
         {
-            if (dataContainer.panelListData.panelDatas.Count > dataContainer.listElement.Length)
+            if (dataContainer.panelListData.panelDatas.Count >= dataContainer.listElement.Length)
                 dataContainer.panelListData.panelDatas.Clear();
 
             for (int i = 0; i < leftGrid.childCount; i++)
