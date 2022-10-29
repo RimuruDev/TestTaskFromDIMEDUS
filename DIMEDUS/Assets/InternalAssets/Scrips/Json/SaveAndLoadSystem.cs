@@ -20,14 +20,14 @@ namespace DIMEDUS.RimuruDev
         {
             dataContainer = FindObjectOfType<SceneDataContainer>();
             UIController = FindObjectOfType<UIController>();
+
+            InitData();
         }
 
         private void Start()
         {
             leftGrid = dataContainer.LeftGridParent.transform;
             rightGrid = dataContainer.RightGridParent.transform;
-
-            InitData();
 
             path = $"{Application.streamingAssetsPath}/DataJson.json";
         }
