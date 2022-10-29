@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 namespace DIMEDUS.RimuruDev
 {
-    // TODO: Use (Template Method)
     public sealed class SortHandler : MonoBehaviour
     {
         private SceneDataContainer dataContainer = null;
@@ -22,7 +21,7 @@ namespace DIMEDUS.RimuruDev
         {
             if (toggle == null) { Debug.LogWarning($"Null Reference Exception->{typeof(SortHandler).Name}.SortInt(Toggle)"); return; }
 
-            SortHelper<int>.SortInt<int>(toggle.isOn, dataContainer);
+            SortHelper.SortInt<int>(toggle.isOn, dataContainer);
            // SortInt(toggle.isOn);
         }
 
@@ -120,7 +119,7 @@ namespace DIMEDUS.RimuruDev
         }
     }
 
-    public class SortHelper<T> : MonoBehaviour// where T : struct
+    public class SortHelper : MonoBehaviour// where T : struct
     {
         public static void SortInt<Value>(bool isSortMode, SceneDataContainer dataContainer)
         {
