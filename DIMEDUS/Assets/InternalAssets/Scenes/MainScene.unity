@@ -4981,6 +4981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be09de87517dd4a828bfd251c0fb230d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialPanelCount: 9
   leftGridParent: {fileID: 541365440}
   rightGridParent: {fileID: 954492524}
   dataList:

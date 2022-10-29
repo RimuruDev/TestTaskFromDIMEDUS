@@ -6,6 +6,7 @@ namespace DIMEDUS.RimuruDev
 {
     public sealed class SceneDataContainer : MonoBehaviour
     {
+        [SerializeField] private int initialPanelCount;
         [SerializeField] private GameObject leftGridParent;
         [SerializeField] private GameObject rightGridParent;
 
@@ -15,10 +16,12 @@ namespace DIMEDUS.RimuruDev
         [Space] public HeaderPanel headerLeftPanel;
         [Space] public HeaderPanel headerRightPanel;
 
-        [Space] public PanelData[] listElement = new PanelData[9]; // Magic num. Pleace use Start(){ new PanelData[leftGridParent.Length;]}
+        [Space] public PanelData[] listElement;
         [Space] public PanelListData panelListData = new PanelListData();
 
         public GameObject LeftGridParent { get => leftGridParent; set => leftGridParent = value; }
         public GameObject RightGridParent { get => rightGridParent; set => rightGridParent = value; }
+
+        private void Awake() => listElement = new PanelData[initialPanelCount];
     }
 }
