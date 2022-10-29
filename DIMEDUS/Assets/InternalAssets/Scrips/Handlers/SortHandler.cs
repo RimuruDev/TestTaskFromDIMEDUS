@@ -21,33 +21,40 @@ namespace DIMEDUS.RimuruDev
         {
             if (toggle == null) { Debug.LogWarning($"Null Reference Exception->{typeof(SortHandler).Name}.SortInt(Toggle)"); return; }
 
-            SortHelper.SortInt<int>(toggle.isOn, dataContainer);
-           // SortInt(toggle.isOn);
+            Sort<int>(toggle.isOn);
+            // SortInt(toggle.isOn);
         }
 
         public void SortString(Toggle toggle)
         {
             if (toggle == null) { Debug.LogWarning($"Null Reference Exception->{typeof(SortHandler).Name}.SortString(Toggle)"); return; }
 
-            SortString(toggle.isOn);
+            Sort<string>(toggle.isOn);
+            // SortString(toggle.isOn);
         }
 
-        private void SortInt(bool isSortMode)
+        private void Sort<Value>(bool isSortMode)
         {
-            List<int> tempListInt = new List<int>();
+            List<Value> tempList = new List<Value>();
             int childCount = dataContainer.RightGridParent.transform.childCount;
 
-            for (int i = 0; i < childCount; i++)
+            // temp solution
             {
-                tempListInt.Add(int.Parse(dataContainer.RightGridParent.transform.GetChild(i).GetComponentInChildren<Text>().text));
+                if (typeof(Value).Equals(typeof(string)))
+                    for (int i = 0; i < childCount; i++)
+                        tempList.Add((Value)Convert.ChangeType(dataContainer.RightGridParent.transform.GetChild(i).GetChild(1).GetChild(0).GetComponentInChildren<Text>().text, typeof(Value)));
+
+                if (typeof(Value).Equals(typeof(int)))
+                    for (int i = 0; i < childCount; i++)
+                        tempList.Add((Value)Convert.ChangeType(dataContainer.RightGridParent.transform.GetChild(i).GetComponentInChildren<Text>().text, typeof(Value)));
             }
 
             if (isSortMode)
-                tempListInt.Sort();
+                tempList.Sort();
             else
-                tempListInt.Reverse();
+                tempList.Reverse();
 
-            SortIntPanel(tempListInt);
+            SortIntPanel<Value>(tempList);
         }
 
         private void SortString(bool isSortMode)
@@ -68,7 +75,7 @@ namespace DIMEDUS.RimuruDev
             SortStringPanel(tempListString);
         }
 
-        private void SortIntPanel(List<int> list)
+        private void SortIntPanel<Value>(List<Value> list)
         {
             GameObject tempParentGO = new GameObject();
             {
@@ -83,11 +90,20 @@ namespace DIMEDUS.RimuruDev
                 {
                     foreach (Transform item in tempParentGO.transform)
                     {
-                        if (item.GetChild(0).GetChild(0).GetComponent<Text>().text == list[i].ToString())
-                        {
-                            item.SetParent(dataContainer.RightGridParent.transform);
-                        }
+                        if (typeof(Value).Equals(typeof(string)))
+                            if (item.GetChild(1).GetChild(0).GetComponent<Text>().text == list[i].ToString())
+                            {
+                                item.SetParent(dataContainer.RightGridParent.transform);
+                            }
+
+                        if (typeof(Value).Equals(typeof(int)))
+                            if (item.GetChild(0).GetChild(0).GetComponent<Text>().text == list[i].ToString())
+                            {
+                                item.SetParent(dataContainer.RightGridParent.transform);
+                            }
                     }
+
+
                 }
             }
             Destroy(tempParentGO);
@@ -139,10 +155,10 @@ namespace DIMEDUS.RimuruDev
             SortIntPanel<Value>(tempListInt, dataContainer);
         }
 
-      //  public static T GetValue<T>(String value)
-       // {
+        //  public static T GetValue<T>(String value)
+        // {
         //    return (T)Convert.ChangeType(value, typeof(T));
-      //  }
+        //  }
 
         private static void SortIntPanel<Value>(List<Value> list, SceneDataContainer dataContainer)
         {
