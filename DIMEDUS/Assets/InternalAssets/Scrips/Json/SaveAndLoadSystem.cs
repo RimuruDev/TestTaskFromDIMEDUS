@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.IO;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,7 +31,7 @@ namespace DIMEDUS.RimuruDev
             path = $"{Application.streamingAssetsPath}/DataJson.json";
         }
 
-        private void InitData()// TODO: Move it to a separate method.
+        private void InitData()
         {
             for (int i = 0; i < dataContainer.listElement.Length; i++)
             {
@@ -42,61 +41,78 @@ namespace DIMEDUS.RimuruDev
             }
         }
 
+        // TODO: Move to a separate class
         public void LoadToJson()
         {
-            // Parse json
-            string json = string.Empty;
-            {
-                if (File.Exists(path))
-                    json = File.ReadAllText(path);
-                else
-                    using (File.Create(path))
-                        json = File.ReadAllText(path);
-            }
-            PanelListData data = JsonUtility.FromJson<PanelListData>(json);
+            MoveAllPanelElementsToTheLeft();
 
-            // Move all panel elements to the left // TODO: Move it to a separate method.
-            int rightChildCount = rightGrid.childCount;
-            for (int i = 0; i < rightChildCount; i++)
-            {
-                rightGrid.GetChild(0).SetParent(leftGrid);
-            }
+            LoadData();
 
-            // Load data
-            for (int i = 0; i < dataContainer.listElement.Length; i++)
-            {
-                dataContainer.listElement[i].text = data.panelDatas[i].text;
-                dataContainer.listElement[i].panelSide = data.panelDatas[i].panelSide;
-                dataContainer.listElement[i].elementNum = data.panelDatas[i].elementNum;
-            }
+            DataFilling();
 
-            // Data filling  // TODO: Move it to a separate method + cache coll GetComponentInChildren
-            for (int i = 0; i < leftGrid.childCount; i++)
-            {
-                leftGrid.GetChild(i).GetChild(0).GetComponentInChildren<Text>().text = dataContainer.listElement[i].elementNum.ToString();
-                leftGrid.GetChild(i).GetChild(1).GetComponentInChildren<Text>().text = dataContainer.listElement[i].text;
-            }
-
-            // Transferring Saved Left Side Panels. // TODO: Move it to a separate method.
-            int hitPosition = 0;
-            {
-                for (int i = 0; i < dataContainer.listElement.Length; i++)
-                {
-                    if (dataContainer.listElement[i].panelSide == ((int)PanelSides.Right))
-                    {
-                        hitPosition = i;
-
-                        break;
-                    }
-                }
-
-                for (int i = hitPosition; i < dataContainer.listElement.Length; i++)
-                {
-                    leftGrid.GetChild(hitPosition).SetParent(rightGrid);
-                }
-            }
+            TransferringSavedLeftSidePanels();
 
             UIController.HeadersElementCounterUpdate();
+
+            void MoveAllPanelElementsToTheLeft()
+            {
+                int rightChildCount = rightGrid.childCount;
+                for (int i = 0; i < rightChildCount; i++)
+                {
+                    rightGrid.GetChild(0).SetParent(leftGrid);
+                }
+            }
+
+            void LoadData()
+            {
+                string json = string.Empty;
+                {
+                    if (File.Exists(path))
+                        json = File.ReadAllText(path);
+                    else
+                        using (File.Create(path))
+                            json = File.ReadAllText(path);
+                }
+                PanelListData data = JsonUtility.FromJson<PanelListData>(json);
+
+
+                for (int i = 0; i < dataContainer.listElement.Length; i++)
+                {
+                    dataContainer.listElement[i].text = data.panelDatas[i].text;
+                    dataContainer.listElement[i].panelSide = data.panelDatas[i].panelSide;
+                    dataContainer.listElement[i].elementNum = data.panelDatas[i].elementNum;
+                }
+            }
+
+            void DataFilling()
+            {
+                for (int i = 0; i < leftGrid.childCount; i++)
+                {
+                    leftGrid.GetChild(i).GetChild(0).GetComponentInChildren<Text>().text = dataContainer.listElement[i].elementNum.ToString();
+                    leftGrid.GetChild(i).GetChild(1).GetComponentInChildren<Text>().text = dataContainer.listElement[i].text;
+                }
+            }
+
+            void TransferringSavedLeftSidePanels()
+            {
+                int hitPosition = 0;
+                {
+                    for (int i = 0; i < dataContainer.listElement.Length; i++)
+                    {
+                        if (dataContainer.listElement[i].panelSide == ((int)PanelSides.Right))
+                        {
+                            hitPosition = i;
+
+                            break;
+                        }
+                    }
+
+                    for (int i = hitPosition; i < dataContainer.listElement.Length; i++)
+                    {
+                        leftGrid.GetChild(hitPosition).SetParent(rightGrid);
+                    }
+                }
+            }
         }
 
         public void SaveToJson()
