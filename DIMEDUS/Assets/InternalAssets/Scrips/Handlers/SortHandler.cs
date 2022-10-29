@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
+using Newtonsoft.Json.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace DIMEDUS.RimuruDev
 {
+    // TODO: Use (Template Method)
     public sealed class SortHandler : MonoBehaviour
     {
         private SceneDataContainer dataContainer = null;
@@ -19,7 +22,8 @@ namespace DIMEDUS.RimuruDev
         {
             if (toggle == null) { Debug.LogWarning($"Null Reference Exception->{typeof(SortHandler).Name}.SortInt(Toggle)"); return; }
 
-            SortInt(toggle.isOn);
+            SortHelper<int>.SortInt<int>(toggle.isOn, dataContainer);
+           // SortInt(toggle.isOn);
         }
 
         public void SortString(Toggle toggle)
@@ -65,8 +69,6 @@ namespace DIMEDUS.RimuruDev
             SortStringPanel(tempListString);
         }
 
-        // TODO: У методов (SortIntPanel and SortStringPanel) слишком много ответственности,
-        // необходимо вынести функционал отвечающий за визуализацию данных.
         private void SortIntPanel(List<int> list)
         {
             GameObject tempParentGO = new GameObject();
@@ -92,7 +94,7 @@ namespace DIMEDUS.RimuruDev
             Destroy(tempParentGO);
         }
 
-        private void SortStringPanel(List<string> list) // TODO: List<string> заменить на List<T>
+        private void SortStringPanel(List<string> list)
         {
             GameObject tempParentGO = new GameObject();
             {
@@ -108,6 +110,57 @@ namespace DIMEDUS.RimuruDev
                     foreach (Transform item in tempParentGO.transform)
                     {
                         if (item.GetChild(1).GetChild(0).GetComponent<Text>().text == list[i])
+                        {
+                            item.SetParent(dataContainer.RightGridParent.transform);
+                        }
+                    }
+                }
+            }
+            Destroy(tempParentGO);
+        }
+    }
+
+    public class SortHelper<T> : MonoBehaviour// where T : struct
+    {
+        public static void SortInt<Value>(bool isSortMode, SceneDataContainer dataContainer)
+        {
+            List<Value> tempListInt = new List<Value>();
+            int childCount = dataContainer.RightGridParent.transform.childCount;
+
+            for (int i = 0; i < childCount; i++)
+            {
+                tempListInt.Add((Value)Convert.ChangeType(dataContainer.RightGridParent.transform.GetChild(i).GetComponentInChildren<Text>().text, typeof(Value)));
+            }
+
+            if (isSortMode)
+                tempListInt.Sort();
+            else
+                tempListInt.Reverse();
+
+            SortIntPanel<Value>(tempListInt, dataContainer);
+        }
+
+      //  public static T GetValue<T>(String value)
+       // {
+        //    return (T)Convert.ChangeType(value, typeof(T));
+      //  }
+
+        private static void SortIntPanel<Value>(List<Value> list, SceneDataContainer dataContainer)
+        {
+            GameObject tempParentGO = new GameObject();
+            {
+                int childCount = dataContainer.RightGridParent.transform.childCount;
+
+                for (int i = 0; i < childCount; i++)
+                {
+                    dataContainer.RightGridParent.transform.GetChild(0).SetParent(tempParentGO.transform);
+                }
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    foreach (Transform item in tempParentGO.transform)
+                    {
+                        if (item.GetChild(0).GetChild(0).GetComponent<Text>().text == list[i].ToString())
                         {
                             item.SetParent(dataContainer.RightGridParent.transform);
                         }
