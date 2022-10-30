@@ -37,7 +37,7 @@ namespace DIMEDUS.RimuruDev
         {
             for (int i = 0; i < dataContainer.listElement.Length; i++)
             {
-                dataContainer.listElement[i].panelSide = 0;
+                dataContainer.listElement[i].panelSide = PanelSides.Left;
                 dataContainer.listElement[i].text = dataContainer.dataList.listString[i];
                 dataContainer.listElement[i].elementNum = dataContainer.dataList.listInt[i];
             }
