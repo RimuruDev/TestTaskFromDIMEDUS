@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "4282b66549f2b6c4296958b5703a86b7c213db4a"
     },
+    "com.leopotam.ecs-unityintegration": {
+      "version": "https://github.com/Leopotam/ecs-unityintegration.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "16f527e942e4c03efabff357d718c4ba0092a477"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.7",
       "depth": 1,
