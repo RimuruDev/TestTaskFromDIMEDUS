@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &980493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 980495}
+  - component: {fileID: 980494}
+  m_Layer: 0
+  m_Name: EcsInit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &980494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92567b77a4a5b4ee2b5f2b9a84e91c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataContainer: {fileID: 0}
+--- !u!4 &980495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980493}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &11840287
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +257,7 @@ GameObject:
   - component: {fileID: 35133043}
   m_Layer: 5
   m_Name: IntViewText
-  m_TagString: Untagged
+  m_TagString: TextInt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -395,7 +440,7 @@ GameObject:
   - component: {fileID: 67239607}
   m_Layer: 5
   m_Name: StringViewText
-  m_TagString: Untagged
+  m_TagString: TextString
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -552,7 +597,7 @@ GameObject:
   - component: {fileID: 309236384}
   m_Layer: 5
   m_Name: IntViewText
-  m_TagString: Untagged
+  m_TagString: TextInt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -632,7 +677,7 @@ GameObject:
   - component: {fileID: 316930112}
   m_Layer: 5
   m_Name: StringViewText
-  m_TagString: Untagged
+  m_TagString: TextString
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -837,7 +882,7 @@ GameObject:
   - component: {fileID: 343064156}
   m_Layer: 5
   m_Name: StringViewText
-  m_TagString: Untagged
+  m_TagString: TextString
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1076,7 +1121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &422878808
 Transform:
   m_ObjectHideFlags: 0
@@ -1648,7 +1693,7 @@ GameObject:
   - component: {fileID: 592994222}
   m_Layer: 5
   m_Name: IntViewText
-  m_TagString: Untagged
+  m_TagString: TextInt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1772,7 +1817,7 @@ GameObject:
   - component: {fileID: 616560618}
   m_Layer: 5
   m_Name: StringViewText
-  m_TagString: Untagged
+  m_TagString: TextString
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1852,7 +1897,7 @@ GameObject:
   - component: {fileID: 619633785}
   m_Layer: 5
   m_Name: StringViewText
-  m_TagString: Untagged
+  m_TagString: TextString
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1932,7 +1977,7 @@ GameObject:
   - component: {fileID: 660884796}
   m_Layer: 5
   m_Name: StringViewText
-  m_TagString: Untagged
+  m_TagString: TextString
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2045,7 +2090,7 @@ GameObject:
   - component: {fileID: 709727064}
   m_Layer: 5
   m_Name: IntViewText
-  m_TagString: Untagged
+  m_TagString: TextInt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2429,6 +2474,121 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889219043}
   m_CullTransparentMesh: 1
+--- !u!1 &897356141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 897356143}
+  - component: {fileID: 897356142}
+  m_Layer: 0
+  m_Name: DataContainer
+  m_TagString: DataContainer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &897356142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897356141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22df608f05b204ad686f0097585ceef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftGridSide: {fileID: 541365441}
+  rightGridSide: {fileID: 954492525}
+  leftPanel: {fileID: 1889759779}
+  rightPanel: {fileID: 936411412}
+  leftHeaderPanel:
+    elementCounterText: {fileID: 861075258}
+    panelNameText: {fileID: 1637362518}
+  rightHeaderPanel:
+    elementCounterText: {fileID: 370887353}
+    panelNameText: {fileID: 889219045}
+  panelDataList:
+    listInt: 000000000100000002000000080000000300000004000000060000000500000007000000
+    listString:
+    - "\u0415\u043B\u0438\u0437\u0430\u0432\u0435\u0442\u0430"
+    - "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u043E"
+    - "\u0413\u0430\u043B\u044F"
+    - "\u041F\u0435\u0448\u043A\u0430"
+    - "\u0414\u0443\u0441\u044F"
+    - "\u041F\u0443\u043B\u044C\u0441\u0430\u0440"
+    - "\u0411\u0443\u0434\u0434\u0430"
+    - "\u0412\u0430\u0441\u044F"
+    - "\u041A\u0438\u043C\u0430\u043D\u043E"
+  panelDatas:
+  - panelSide: 0
+    text: 
+    elementNum: 0
+  - panelSide: 0
+    text: 
+    elementNum: 0
+  - panelSide: 0
+    text: 
+    elementNum: 0
+  - panelSide: 0
+    text: 
+    elementNum: 0
+  - panelSide: 0
+    text: 
+    elementNum: 0
+  - panelSide: 0
+    text: 
+    elementNum: 0
+  - panelSide: 0
+    text: 
+    elementNum: 0
+  - panelSide: 0
+    text: 
+    elementNum: 0
+  - panelSide: 0
+    text: 
+    elementNum: 0
+  textContainer:
+    intPanelsText:
+    - {fileID: 35133043}
+    - {fileID: 1900120165}
+    - {fileID: 1172635760}
+    - {fileID: 1146884546}
+    - {fileID: 709727064}
+    - {fileID: 1633763530}
+    - {fileID: 1575685840}
+    - {fileID: 309236384}
+    - {fileID: 592994222}
+    stringPanelsText:
+    - {fileID: 619633785}
+    - {fileID: 616560618}
+    - {fileID: 67239607}
+    - {fileID: 2137630702}
+    - {fileID: 316930112}
+    - {fileID: 343064156}
+    - {fileID: 660884796}
+    - {fileID: 1050741114}
+    - {fileID: 978540036}
+--- !u!4 &897356143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897356141}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &918671757
 GameObject:
   m_ObjectHideFlags: 0
@@ -3021,7 +3181,7 @@ GameObject:
   - component: {fileID: 978540036}
   m_Layer: 5
   m_Name: StringViewText
-  m_TagString: Untagged
+  m_TagString: TextString
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3303,7 +3463,7 @@ GameObject:
   - component: {fileID: 1050741114}
   m_Layer: 5
   m_Name: StringViewText
-  m_TagString: Untagged
+  m_TagString: TextString
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3581,7 +3741,7 @@ GameObject:
   - component: {fileID: 1146884546}
   m_Layer: 5
   m_Name: IntViewText
-  m_TagString: Untagged
+  m_TagString: TextInt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3694,7 +3854,7 @@ GameObject:
   - component: {fileID: 1172635760}
   m_Layer: 5
   m_Name: IntViewText
-  m_TagString: Untagged
+  m_TagString: TextInt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4870,7 +5030,7 @@ GameObject:
   - component: {fileID: 1575685840}
   m_Layer: 5
   m_Name: IntViewText
-  m_TagString: Untagged
+  m_TagString: TextInt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5143,7 +5303,7 @@ GameObject:
   - component: {fileID: 1633763530}
   m_Layer: 5
   m_Name: IntViewText
-  m_TagString: Untagged
+  m_TagString: TextInt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5621,7 +5781,7 @@ GameObject:
   - component: {fileID: 1900120165}
   m_Layer: 5
   m_Name: IntViewText
-  m_TagString: Untagged
+  m_TagString: TextInt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6547,7 +6707,7 @@ GameObject:
   - component: {fileID: 2137630702}
   m_Layer: 5
   m_Name: StringViewText
-  m_TagString: Untagged
+  m_TagString: TextString
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

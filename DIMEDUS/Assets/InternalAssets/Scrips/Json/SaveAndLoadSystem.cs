@@ -19,11 +19,13 @@ namespace DIMEDUS.RimuruDev
         {
             dataContainer = FindObjectOfType<SceneDataContainer>();
             UIController = FindObjectOfType<UIController>();
+
+            InitData();
         }
 
         private void Start()
         {
-            InitData();
+            //  InitData();
 
             leftGrid = dataContainer.LeftGridParent.transform;
             rightGrid = dataContainer.RightGridParent.transform;
@@ -35,7 +37,7 @@ namespace DIMEDUS.RimuruDev
         {
             for (int i = 0; i < dataContainer.listElement.Length; i++)
             {
-                dataContainer.listElement[i].panelSide = 0;
+                dataContainer.listElement[i].panelSide = ((int)PanelSides.Left);
                 dataContainer.listElement[i].text = dataContainer.dataList.listString[i];
                 dataContainer.listElement[i].elementNum = dataContainer.dataList.listInt[i];
             }
@@ -147,5 +149,5 @@ namespace DIMEDUS.RimuruDev
         }
     }
 
-    public enum PanelSides { Left = 0, Right = 1 }
+    public enum PanelSides : int { Left = 0, Right = 1, BothSides = 2 } // TODO: swich on byte 
 }
