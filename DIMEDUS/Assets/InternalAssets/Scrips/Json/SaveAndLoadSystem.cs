@@ -19,11 +19,13 @@ namespace DIMEDUS.RimuruDev
         {
             dataContainer = FindObjectOfType<SceneDataContainer>();
             UIController = FindObjectOfType<UIController>();
+            
+            InitData();
         }
 
         private void Start()
         {
-            InitData();
+            //InitData();
 
             leftGrid = dataContainer.LeftGridParent.transform;
             rightGrid = dataContainer.RightGridParent.transform;
