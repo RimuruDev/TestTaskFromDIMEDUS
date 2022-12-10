@@ -1,4 +1,6 @@
 # :pushpin:Sample
+
+
 <p align="center">
   <a>
     <img alt="Made With Unity" src="https://img.shields.io/badge/made%20with-Unity-57b9d3.svg?logo=Unity">
@@ -18,7 +20,14 @@
   <a>
     <img alt="Last Release" src="https://img.shields.io/github/v/release/RimuruDev/TestTaskFromDIMEDUS?include_prereleases&logo=Dropbox&color=yellow">
   </a>
+  <a>
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/RimuruDev/TestTaskFromDIMEDUS?branch=main&label=Stars&logo=GitHub&logoColor=ffffff&labelColor=282828&color=informational&style=flat">
+  </a>
+  <a>
+    <img alt="GitHub user stars" src="https://img.shields.io/github/stars/RimuruDev?affiliations=OWNER&branch=main&label=User%20Stars&logo=GitHub&logoColor=ffffff&labelColor=282828&color=informational&style=flat">
+  </a>
 </p>
+
 
 <p align="center">
 <img src="https://readme-typing-svg.herokuapp.com?color=a282f5&width=700&lines=Извините+за+плохой+код+:3+У+Римуру++лапки+:3+%E2%9D%A4%EF%B8%8F+%E2%9D%A4%EF%B8%8F+%E2%9D%A4%EF%B8%8F">
